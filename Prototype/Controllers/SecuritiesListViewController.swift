@@ -26,10 +26,10 @@ class SecuritiesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SecurityCell
         
-        guard let securityName = securities?.securities.data[indexPath.row][2] else { return cell}
-        let stringSecurityName = String.string(securityName)
+        guard let securityName = securities?.securities.data[indexPath.row][2].getStringValue()! else { return cell}
+    
 
-        cell.securityNameLabel.text = stringSecurityName
+        cell.securityNameLabel.text = securityName
 
         return cell
     }

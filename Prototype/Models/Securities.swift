@@ -22,6 +22,24 @@ enum Paper: Codable {
     case integer(Int)
     case string(String)
     case null
+    
+    func getStringValue() -> String? {
+        switch self {
+        case .string(let value):
+            return value
+        default:
+            return nil
+        }
+    }
+    
+    func getIntValue() -> Int? {
+        switch self {
+        case .integer(let value):
+            return value
+        default:
+            return nil
+        }
+    }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
