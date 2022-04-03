@@ -28,7 +28,7 @@ enum Paper: Codable {
         case .string(let value):
             return value
         default:
-            return nil
+            return "Нет информации"
         }
     }
     

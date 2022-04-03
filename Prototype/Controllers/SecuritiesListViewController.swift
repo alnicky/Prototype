@@ -13,7 +13,17 @@ class SecuritiesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.rowHeight = UITableView.automaticDimension
         tableView.rowHeight = 40
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSecurityDetails" {
+            let detailsViewController = segue.destination as! DetailsListViewController
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            detailsViewController.title = securities?.securities.data[indexPath.row][2].getStringValue()!
+            detailsViewController.paper = (securities?.securities.data[indexPath.row])!
+        }
     }
 
 
@@ -26,11 +36,10 @@ class SecuritiesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SecurityCell
         
-        guard let securityName = securities?.securities.data[indexPath.row][2].getStringValue()! else { return cell}
-    
-
-        cell.securityNameLabel.text = securityName
-
+        if let securityName = securities?.securities.data[indexPath.row][2].getStringValue()! {
+            cell.securityNameLabel.text = securityName
+        }
+        
         return cell
     }
 }
@@ -60,7 +69,7 @@ extension SecuritiesListViewController {
 
 extension String {
     static func string(_ value: Paper) -> String {
-        guard let stringVal = "\(value)" as? String else { return "" }
+        let stringVal = "\(value)"
         return stringVal
     }
 }
