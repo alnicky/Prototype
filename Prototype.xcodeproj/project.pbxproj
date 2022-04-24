@@ -63,13 +63,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		622AD47A2815A843007CAE8F /* Extension */ = {
+		622AD47A2815A843007CAE8F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				622AD47B2815A888007CAE8F /* DetailsListVC+Extensions.swift */,
 				622AD47D2815AB63007CAE8F /* MarketVC+Extensions.swift */,
 			);
-			path = Extension;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		628BC61527C55B4B00F8B338 = {
@@ -91,7 +91,7 @@
 		628BC62027C55B4C00F8B338 /* Prototype */ = {
 			isa = PBXGroup;
 			children = (
-				622AD47A2815A843007CAE8F /* Extension */,
+				622AD47A2815A843007CAE8F /* Extensions */,
 				62D454FE27EC610400A59A47 /* Application */,
 				62D454FB27EB0FA400A59A47 /* Models */,
 				62F03EDA27F9A3F800D2FB81 /* Views */,
