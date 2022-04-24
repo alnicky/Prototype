@@ -13,8 +13,8 @@ class SecuritiesListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.rowHeight = UITableView.automaticDimension
-        tableView.rowHeight = 40
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 40
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -23,6 +23,8 @@ class SecuritiesListViewController: UITableViewController {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             detailsViewController.title = securities?.securities.data[indexPath.row][2].getStringValue()!
             detailsViewController.paper = (securities?.securities.data[indexPath.row])!
+            detailsViewController.secid = securities?.securities.data[indexPath.row][1].getStringValue()
+            detailsViewController.fetchBoards()
         }
     }
 
@@ -64,12 +66,5 @@ extension SecuritiesListViewController {
                 print(error)
             }
         }.resume()
-    }
-}
-
-extension String {
-    static func string(_ value: Paper) -> String {
-        let stringVal = "\(value)"
-        return stringVal
     }
 }

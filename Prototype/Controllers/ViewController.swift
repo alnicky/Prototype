@@ -9,7 +9,7 @@ import UIKit
 
 enum URLs: String{
     case securities = "https://iss.moex.com/iss/securities.json"
-    case boards = "https://iss.moex.com/iss/securities/moex.json"
+    case boards = "https://iss.moex.com/iss/securities/secid.json"
 }
 
 class ViewController: UIViewController {

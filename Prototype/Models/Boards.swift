@@ -1,26 +1,28 @@
 //
-//  Model.swift
+//  Boards.swift
 //  Prototype
 //
-//  Created by Никита on 22.02.2022.
+//  Created by Никита on 03.04.2022.
 //
 
 import Foundation
 
-// MARK: - DataFromSecurities
-struct DataFromSecurities: Codable {
-    let securities: Securities
+// MARK: Data from Boards
+struct DataFromBoards: Codable {
+    let boards: Boards
 }
 
-// MARK: - Securities
-struct Securities: Codable {
-    let data: [[SecurityData]]
+// MARK: Boards
+struct Boards: Codable {
+    let data: [[BoardData]]
+    let columns: [String]
 }
 
-enum SecurityData: Codable {
 
-    case integer(Int)
+// MARK: Tool
+enum BoardData: Codable {
     case string(String)
+    case integer(Int)
     case null
     
     func getStringValue() -> String? {
@@ -40,7 +42,7 @@ enum SecurityData: Codable {
             return nil
         }
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         
@@ -57,7 +59,7 @@ enum SecurityData: Codable {
             return
         }
         
-        throw DecodingError.typeMismatch(SecurityData.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for security"))
+        throw DecodingError.typeMismatch(BoardData.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for board"))
     }
 
     func encode(to encoder: Encoder) throws {
