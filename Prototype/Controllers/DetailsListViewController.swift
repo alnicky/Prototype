@@ -23,7 +23,7 @@ class DetailsListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 50
     }
     
     override func viewDidLayoutSubviews() {
@@ -43,6 +43,7 @@ class DetailsListViewController: UITableViewController {
         case 0:
             numberOfRows = 12
         default:
+            // Number of boards fo security
             numberOfRows = 1
         }
         
@@ -104,11 +105,13 @@ class DetailsListViewController: UITableViewController {
             
             guard let nameIndex = boards?.boards.columns.firstIndex(of: "title") else { return }
             marketViewController.title = boards?.boards.data[indexPath.row][nameIndex].getStringValue()
-            
-            marketViewController.engine = boards?.boards.data[indexPath.row][7].getStringValue()
+            guard let engineIndex = boards?.boards.columns.firstIndex(of: "engine") else { return }
+            marketViewController.engine = boards?.boards.data[indexPath.row][engineIndex].getStringValue()
             marketViewController.secid = secid
-            marketViewController.boardId = boards?.boards.data[indexPath.row][1].getStringValue()
-            marketViewController.market = boards?.boards.data[indexPath.row][5].getStringValue()
+            guard let boardIdIndex = boards?.boards.columns.firstIndex(of: "boardid") else { return }
+            marketViewController.boardId = boards?.boards.data[indexPath.row][boardIdIndex].getStringValue()
+            guard let marketIndex = boards?.boards.columns.firstIndex(of: "market") else { return }
+            marketViewController.market = boards?.boards.data[indexPath.row][marketIndex].getStringValue()
             
             marketViewController.fetchBoards()
         }

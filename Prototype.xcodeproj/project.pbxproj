@@ -17,7 +17,6 @@
 		628BC62B27C55B4D00F8B338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 628BC62A27C55B4D00F8B338 /* Assets.xcassets */; };
 		628BC62E27C55B4D00F8B338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 628BC62C27C55B4D00F8B338 /* LaunchScreen.storyboard */; };
 		628BC63827C55DB900F8B338 /* Securities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628BC63727C55DB900F8B338 /* Securities.swift */; };
-		62ABD7DE280B077100BF671A /* BoardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABD7DD280B077100BF671A /* BoardsViewController.swift */; };
 		62ABD7E0280C77FF00BF671A /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABD7DF280C77FF00BF671A /* BoardCell.swift */; };
 		62ABD7E2280DA8BB00BF671A /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABD7E1280DA8BB00BF671A /* Market.swift */; };
 		62ABD7E4280DB5EE00BF671A /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABD7E3280DB5EE00BF671A /* MarketViewController.swift */; };
@@ -41,7 +40,6 @@
 		628BC62D27C55B4D00F8B338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		628BC62F27C55B4D00F8B338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		628BC63727C55DB900F8B338 /* Securities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Securities.swift; sourceTree = "<group>"; };
-		62ABD7DD280B077100BF671A /* BoardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardsViewController.swift; sourceTree = "<group>"; };
 		62ABD7DF280C77FF00BF671A /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		62ABD7E1280DA8BB00BF671A /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		62ABD7E3280DB5EE00BF671A /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				628BC62527C55B4C00F8B338 /* ViewController.swift */,
 				62D454F727E9DDD800A59A47 /* SecuritiesListViewController.swift */,
 				62F03ED427F61CAC00D2FB81 /* DetailsListViewController.swift */,
-				62ABD7DD280B077100BF671A /* BoardsViewController.swift */,
 				62ABD7E3280DB5EE00BF671A /* MarketViewController.swift */,
 			);
 			path = Controllers;
@@ -229,7 +226,6 @@
 				622AD47928158A9D007CAE8F /* MarketCell.swift in Sources */,
 				62F03ED927F9A2AA00D2FB81 /* SecurityInfoCell.swift in Sources */,
 				62D454FD27EB0FE500A59A47 /* SecurityCell.swift in Sources */,
-				62ABD7DE280B077100BF671A /* BoardsViewController.swift in Sources */,
 				62ABD7E4280DB5EE00BF671A /* MarketViewController.swift in Sources */,
 				62ABD7E0280C77FF00BF671A /* BoardCell.swift in Sources */,
 				628BC62227C55B4C00F8B338 /* AppDelegate.swift in Sources */,

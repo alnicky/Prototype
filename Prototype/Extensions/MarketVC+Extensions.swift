@@ -13,7 +13,6 @@ extension MarketViewController {
     
     func fetchBoards() {
         let stringUrl = "https://iss.moex.com/iss/engines/\(engine!)/markets/\(market!)/boards/\(boardId!)/securities/\(secid!).json"
-        print(stringUrl)
         guard let url = URL(string: stringUrl) else { return }
         
         URLSession.shared.dataTask(with: url) {
@@ -43,13 +42,34 @@ extension MarketViewController {
             } else {
                 cell.marketLabel.text = "No info about market price"
             }
-//            guard let index = marketData?.marketdata.columns.firstIndex(of: "MARKETPRICE") else { return }
-//            guard let marketPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
-//            cell.marketLabel.text = "Market price: \(marketPrice)"
         case 1:
-            guard let index = marketData?.marketdata.columns.firstIndex(of: "OPEN") else { return }
-            guard let openPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
-            cell.marketLabel.text = "Open price: \(openPrice)"
+            if let index = marketData?.marketdata.columns.firstIndex(of: "OPEN") {
+                guard let openPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
+                cell.marketLabel.text = "Open price: \(openPrice)"
+            } else {
+                cell.marketLabel.text = "No info about open price"
+            }
+        case 2:
+            if let index = marketData?.marketdata.columns.firstIndex(of: "LOW") {
+                guard let lowPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
+                cell.marketLabel.text = "Low price: \(lowPrice)"
+            } else {
+                cell.marketLabel.text = "No info about low price"
+            }
+        case 3:
+            if let index = marketData?.marketdata.columns.firstIndex(of: "HIGH") {
+                guard let highPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
+                cell.marketLabel.text = "High price: \(highPrice)"
+            } else {
+                cell.marketLabel.text = "No info about high price"
+            }
+        case 4:
+            if let index = marketData?.marketdata.columns.firstIndex(of: "LAST") {
+                guard let lastPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
+                cell.marketLabel.text = "Last price: \(lastPrice)"
+            } else {
+                cell.marketLabel.text = "No info about last price"
+            }
         default:
             return
         }

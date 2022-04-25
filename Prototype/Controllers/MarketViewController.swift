@@ -22,11 +22,33 @@ class MarketViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 40
+        tableView.estimatedRowHeight = 20
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView(frame: CGRect(x: 0,
+                                          y: 0,
+                                          width: view.frame.size.width,
+                                          height: 20))
+        header.backgroundColor = .systemBackground
+        
+        let label = UILabel(frame: CGRect(x: 16,
+                                          y: 5,
+                                          width: header.frame.size.width - 16,
+                                          height: header.frame.size.height + 5))
+        header.addSubview(label)
+        label.text = "Инофрмация о ценах"
+        label.font = .boldSystemFont(ofSize: 22)
+        
+        return header
     }
 
     // MARK: - Table view data source
@@ -36,7 +58,11 @@ class MarketViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
     }
 
     // MARK: Configure cell
