@@ -21,7 +21,6 @@
 		62ABD7E0280C77FF00BF671A /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABD7DF280C77FF00BF671A /* BoardCell.swift */; };
 		62ABD7E2280DA8BB00BF671A /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABD7E1280DA8BB00BF671A /* Market.swift */; };
 		62ABD7E4280DB5EE00BF671A /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABD7E3280DB5EE00BF671A /* MarketViewController.swift */; };
-		62B431D82817FE6600EB39E7 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B431D72817FE6600EB39E7 /* NetworkMonitor.swift */; };
 		62B5C2842819687800F08034 /* NetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B5C2832819687800F08034 /* NetStatus.swift */; };
 		62B5C2892819780500F08034 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B5C2882819780500F08034 /* ViewController+Extensions.swift */; };
 		62D454F827E9DDD800A59A47 /* SecuritiesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D454F727E9DDD800A59A47 /* SecuritiesListViewController.swift */; };
@@ -48,7 +47,6 @@
 		62ABD7DF280C77FF00BF671A /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		62ABD7E1280DA8BB00BF671A /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		62ABD7E3280DB5EE00BF671A /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
-		62B431D72817FE6600EB39E7 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		62B5C2832819687800F08034 /* NetStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetStatus.swift; sourceTree = "<group>"; };
 		62B5C2882819780500F08034 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 		62D454F727E9DDD800A59A47 /* SecuritiesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritiesListViewController.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 		62B431D62817FE4100EB39E7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				62B431D72817FE6600EB39E7 /* NetworkMonitor.swift */,
 				62B5C2832819687800F08034 /* NetStatus.swift */,
 			);
 			path = Network;
@@ -252,7 +249,6 @@
 				628BC62227C55B4C00F8B338 /* AppDelegate.swift in Sources */,
 				62B5C2842819687800F08034 /* NetStatus.swift in Sources */,
 				62D454F827E9DDD800A59A47 /* SecuritiesListViewController.swift in Sources */,
-				62B431D82817FE6600EB39E7 /* NetworkMonitor.swift in Sources */,
 				62F03EDC27FA046500D2FB81 /* Boards.swift in Sources */,
 				622AD47C2815A888007CAE8F /* DetailsListVC+Extensions.swift in Sources */,
 				628BC62427C55B4C00F8B338 /* SceneDelegate.swift in Sources */,
