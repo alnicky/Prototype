@@ -6,10 +6,10 @@
 //
 
 import UIKit
+import Network
 
 enum URLs: String{
     case securities = "https://iss.moex.com/iss/securities.json"
-    case boards = "https://iss.moex.com/iss/securities/secid.json"
 }
 
 class ViewController: UIViewController {
@@ -18,9 +18,12 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "loadData" {
+        if segue.identifier == "loadData" && NetStatus.shared.isConnected &&
+            NetStatus.shared.interfaceType != Network.NWInterface.InterfaceType.other {
             let securityVC = segue.destination as! SecuritiesListViewController
             securityVC.fetchSecurities()
+        } else {
+            showLossNetworkAlert()
         }
     }
 

@@ -13,11 +13,20 @@ class MarketViewController: UITableViewController {
     
     var marketData: DataFromMarket?
     
+    // MARK: Properties for query
+    
     var engine: String?
     var market: String?
     var boardId: String?
     var secid: String?
     
+    // MARK: Property for updating data
+    
+//    let timer = Timer.scheduledTimer(timeInterval: 1.0,
+//                                     target: self,
+//                                     selector: #selector(updateData),
+//                                     userInfo: nil,
+//                                     repeats: true)
 
     override func viewDidLoad() {
         super.viewDidLoad()

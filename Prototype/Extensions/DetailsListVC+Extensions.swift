@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension DetailsListViewController {
     
@@ -93,5 +94,21 @@ extension DetailsListViewController {
     func fillCellWithBoardsName(cell: BoardCell, indexPath: IndexPath) {
         guard let name = boards?.boards.data[0][2].getStringValue() else { return }
         cell.boardLabel.text = name
+    }
+    
+    // MARK: Alert
+    
+    func showLossNetworkAlert() {
+            let alert = UIAlertController(title: "Lost connection",
+                                          message: "Please connect to network or turn off VPN",
+                                          preferredStyle: .alert)
+        
+            alert.addAction(UIAlertAction(title: "OK",
+                                          style: .cancel,
+                                          handler: {(_: UIAlertAction!) in
+                                            //Sign out action
+            }))
+        
+            self.present(alert, animated: true, completion: nil)
     }
 }

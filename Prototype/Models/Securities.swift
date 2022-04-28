@@ -15,6 +15,7 @@ struct DataFromSecurities: Codable {
 // MARK: - Securities
 struct Securities: Codable {
     let data: [[SecurityData]]
+    let columns: [String]
 }
 
 enum SecurityData: Codable {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension MarketViewController {
     
@@ -32,6 +33,8 @@ extension MarketViewController {
             }
         }.resume()
     }
+    
+    // MARK: Filling the cell with info from market
     
     func fillCellWithMarketData(cell: MarketCell, indexPath: IndexPath) {
         switch indexPath.row {
@@ -73,6 +76,32 @@ extension MarketViewController {
         default:
             return
         }
+    }
+    
+    // MARK: Alert
+    
+    func showLossNetworkAlert() {
+            let alert = UIAlertController(title: "Lost connection",
+                                          message: "Please connect to network or turn off VPN",
+                                          preferredStyle: .alert)
+        
+            alert.addAction(UIAlertAction(title: "OK",
+                                          style: .cancel,
+                                          handler: {(_: UIAlertAction!) in
+                                            //Sign out action
+            }))
+        
+            self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Updating data from market
+         
+    @objc func updateData() {
+        fetchBoards()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        print("Data has updated")
     }
     
 }

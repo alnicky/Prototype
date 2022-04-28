@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 class SecuritiesListViewController: UITableViewController {
     
@@ -17,14 +18,29 @@ class SecuritiesListViewController: UITableViewController {
         tableView.estimatedRowHeight = 40
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: index, animated: true)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSecurityDetails" {
+        if segue.identifier == "showSecurityDetails" && NetStatus.shared.isConnected &&
+            NetStatus.shared.interfaceType != Network.NWInterface.InterfaceType.other {
             let detailsViewController = segue.destination as! DetailsListViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            detailsViewController.title = securities?.securities.data[indexPath.row][2].getStringValue()!
+            
+            guard let nameIndex = securities?.securities.columns.firstIndex(of: "shortname") else { return }
+            detailsViewController.title = securities?.securities.data[indexPath.row][nameIndex].getStringValue()!
             detailsViewController.paper = (securities?.securities.data[indexPath.row])!
-            detailsViewController.secid = securities?.securities.data[indexPath.row][1].getStringValue()
+            guard let secidIndex = securities?.securities.columns.firstIndex(of: "secid") else { return }
+            detailsViewController.secid = securities?.securities.data[indexPath.row][secidIndex].getStringValue()
             detailsViewController.fetchBoards()
+        } else {
+            showLossNetworkAlert()
+            if let index = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: index, animated: true)
+            }
         }
     }
 
@@ -38,33 +54,16 @@ class SecuritiesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SecurityCell
         
-        if let securityName = securities?.securities.data[indexPath.row][2].getStringValue()! {
-            cell.securityNameLabel.text = securityName
+        if let nameIndex = securities?.securities.columns.firstIndex(of: "shortname") {
+            if let securityName = securities?.securities.data[indexPath.row][nameIndex].getStringValue()! {
+                cell.securityNameLabel.text = securityName
+            } else {
+                cell.securityNameLabel.text = "No short name in json"
+            }
+        } else {
+            cell.securityNameLabel.text = "No short name column in json"
         }
         
         return cell
-    }
-}
-
-extension SecuritiesListViewController {
-    func fetchSecurities() {
-        guard let url = URL(string: URLs.securities.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) {
-            (data, response, error) in
-            guard error == nil else {
-                print(error?.localizedDescription ?? "noDesciption")
-                return
-            }
-            guard let data = data else { return }
-            do {
-                self.securities = try JSONDecoder().decode(DataFromSecurities.self, from: data)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
-            } catch let error {
-                print(error)
-            }
-        }.resume()
     }
 }

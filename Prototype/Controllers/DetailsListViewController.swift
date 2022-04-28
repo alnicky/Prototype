@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 class DetailsListViewController: UITableViewController {
     
@@ -99,7 +100,8 @@ class DetailsListViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDataMarket" {
+        if segue.identifier == "showDataMarket" && NetStatus.shared.isConnected &&
+            NetStatus.shared.interfaceType != Network.NWInterface.InterfaceType.other {
             let marketViewController = segue.destination as! MarketViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
@@ -114,6 +116,11 @@ class DetailsListViewController: UITableViewController {
             marketViewController.market = boards?.boards.data[indexPath.row][marketIndex].getStringValue()
             
             marketViewController.fetchBoards()
+        } else {
+            showLossNetworkAlert()
+            if let index = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRow(at: index, animated: true)
+            }
         }
     }
 }
