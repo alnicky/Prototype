@@ -10,6 +10,8 @@ import Network
 
 class SecuritiesListViewController: UITableViewController {
     
+    var textFromSearch: String!
+    
     var securities: DataFromSecurities?
     
     override func viewDidLoad() {
@@ -63,6 +65,17 @@ class SecuritiesListViewController: UITableViewController {
         } else {
             cell.securityNameLabel.text = "No short name column in json"
         }
+        
+        if let secidIndex = securities?.securities.columns.firstIndex(of: "secid") {
+            if let securityName = securities?.securities.data[indexPath.row][secidIndex].getStringValue()! {
+                cell.secidLabel.text = securityName
+            } else {
+                cell.secidLabel.text = "No secid in json"
+            }
+        } else {
+            cell.secidLabel.text = "No secid column in json"
+        }
+        
         
         return cell
     }

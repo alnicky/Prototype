@@ -12,8 +12,9 @@ extension MarketViewController {
     
     // MARK: Loading and fetching data from market
     
-    func fetchBoards() {
+    func fetchMarket() {
         let stringUrl = "https://iss.moex.com/iss/engines/\(engine!)/markets/\(market!)/boards/\(boardId!)/securities/\(secid!).json"
+        print(stringUrl)
         guard let url = URL(string: stringUrl) else { return }
         
         URLSession.shared.dataTask(with: url) {
@@ -97,11 +98,29 @@ extension MarketViewController {
     // MARK: Updating data from market
          
     @objc func updateData() {
-        fetchBoards()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        if NetStatus.shared.isConnected{
+            let stringUrl = "https://iss.moex.com/iss/engines/\(engine!)/markets/\(market!)/boards/\(boardId!)/securities/\(secid!).json"
+            guard let url = URL(string: stringUrl) else { return }
+            
+            URLSession.shared.dataTask(with: url) {
+                (data, response, error) in
+                guard error == nil else {
+                    print(error?.localizedDescription ?? "noDesciption")
+                    return
+                }
+                guard let data = data else { return }
+                do {
+                    self.marketData = try JSONDecoder().decode(DataFromMarket.self, from: data)
+                } catch let error {
+                    print(error)
+                }
+            }.resume()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } else {
+            showLossNetworkAlert()
         }
-        print("Data has updated")
     }
     
 }

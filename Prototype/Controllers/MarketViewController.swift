@@ -19,23 +19,23 @@ class MarketViewController: UITableViewController {
     var market: String?
     var boardId: String?
     var secid: String?
-    
-    // MARK: Property for updating data
-    
-//    let timer = Timer.scheduledTimer(timeInterval: 1.0,
-//                                     target: self,
-//                                     selector: #selector(updateData),
-//                                     userInfo: nil,
-//                                     repeats: true)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 20
-    }
+        }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Timer.scheduledTimer(timeInterval: 5,
+                             target: self,
+                             selector: #selector(MarketViewController.updateData),
+                             userInfo: nil,
+                             repeats: true)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

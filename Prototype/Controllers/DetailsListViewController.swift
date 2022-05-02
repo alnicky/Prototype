@@ -115,7 +115,7 @@ class DetailsListViewController: UITableViewController {
             guard let marketIndex = boards?.boards.columns.firstIndex(of: "market") else { return }
             marketViewController.market = boards?.boards.data[indexPath.row][marketIndex].getStringValue()
             
-            marketViewController.fetchBoards()
+            marketViewController.fetchMarket()
         } else {
             showLossNetworkAlert()
             if let index = self.tableView.indexPathForSelectedRow {

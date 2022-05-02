@@ -10,6 +10,7 @@ import UIKit
 class SecurityCell: UITableViewCell {
     
     @IBOutlet var securityNameLabel: UILabel!
+    @IBOutlet var secidLabel: UILabel!
     
 }
 

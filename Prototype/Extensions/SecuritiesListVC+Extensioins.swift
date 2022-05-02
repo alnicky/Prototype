@@ -10,7 +10,8 @@ import UIKit
 
 extension SecuritiesListViewController {
     func fetchSecurities() {
-        guard let url = URL(string: URLs.securities.rawValue) else { return }
+        
+        guard let url = getURL(withQuery: textFromSearch) else { return }
         
         URLSession.shared.dataTask(with: url) {
             (data, response, error) in
@@ -44,5 +45,20 @@ extension SecuritiesListViewController {
             }))
         
             self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: Configuring URL
+    
+    func getURL(withQuery query: String) -> URL? {
+        var components = URLComponents()
+        
+        components.scheme = "https"
+        components.host = "iss.moex.com"
+        components.path = "/iss/securities.json"
+        components.queryItems = [
+            URLQueryItem(name: "q", value: query)
+        ]
+        
+        return components.url
     }
 }
