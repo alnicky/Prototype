@@ -24,6 +24,8 @@ class MarketViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 20
+        
+        dump(marketData)
         }
     
     override func viewDidLayoutSubviews() {
@@ -77,8 +79,8 @@ class MarketViewController: UITableViewController {
     // MARK: Configure cell
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MarketCell
-        fillCellWithMarketData(cell: cell, indexPath: indexPath)
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MarketCell
+            fillCellWithMarketData(cell: cell, indexPath: indexPath)
+            return cell
     }
 }

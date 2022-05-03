@@ -19,6 +19,7 @@ extension MarketViewController {
         
         URLSession.shared.dataTask(with: url) {
             (data, response, error) in
+            print("Зашла в URLSesion")
             guard error == nil else {
                 print(error?.localizedDescription ?? "noDesciption")
                 return
@@ -26,9 +27,11 @@ extension MarketViewController {
             guard let data = data else { return }
             do {
                 self.marketData = try JSONDecoder().decode(DataFromMarket.self, from: data)
-                        DispatchQueue.main.async {
-                            self.tableView.reloadData()
-                        }
+                print("Распарсила")
+                dump(self.marketData)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             } catch let error {
                 print(error)
             }
@@ -40,39 +43,39 @@ extension MarketViewController {
     func fillCellWithMarketData(cell: MarketCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            if let index = marketData?.marketdata.columns.firstIndex(of: "MARKETPRICE") {
+            if !(marketData?.marketdata.data.isEmpty ?? true), let index = marketData?.marketdata.columns.firstIndex(of: "MARKETPRICE") {
                 guard let marketPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
                 cell.marketLabel.text = "Market price: \(marketPrice)"
             } else {
-                cell.marketLabel.text = "No info about market price"
+                cell.marketLabel.text = "Market price: нет информации"
             }
         case 1:
-            if let index = marketData?.marketdata.columns.firstIndex(of: "OPEN") {
+            if !(marketData?.marketdata.data.isEmpty ?? true), let index = marketData?.marketdata.columns.firstIndex(of: "OPEN") {
                 guard let openPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
                 cell.marketLabel.text = "Open price: \(openPrice)"
             } else {
-                cell.marketLabel.text = "No info about open price"
+                cell.marketLabel.text = "Open price: нет информации"
             }
         case 2:
-            if let index = marketData?.marketdata.columns.firstIndex(of: "LOW") {
+            if !(marketData?.marketdata.data.isEmpty ?? true), let index = marketData?.marketdata.columns.firstIndex(of: "LOW") {
                 guard let lowPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
                 cell.marketLabel.text = "Low price: \(lowPrice)"
             } else {
-                cell.marketLabel.text = "No info about low price"
+                cell.marketLabel.text = "Low price: нет информации"
             }
         case 3:
-            if let index = marketData?.marketdata.columns.firstIndex(of: "HIGH") {
+            if !(marketData?.marketdata.data.isEmpty ?? true), let index = marketData?.marketdata.columns.firstIndex(of: "HIGH") {
                 guard let highPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
                 cell.marketLabel.text = "High price: \(highPrice)"
             } else {
-                cell.marketLabel.text = "No info about high price"
+                cell.marketLabel.text = "High price: нет информации"
             }
         case 4:
-            if let index = marketData?.marketdata.columns.firstIndex(of: "LAST") {
+            if !(marketData?.marketdata.data.isEmpty ?? true), let index = marketData?.marketdata.columns.firstIndex(of: "LAST") {
                 guard let lastPrice = marketData?.marketdata.data[0][index].getDoubleValue() else { return }
                 cell.marketLabel.text = "Last price: \(lastPrice)"
             } else {
-                cell.marketLabel.text = "No info about last price"
+                cell.marketLabel.text = "Last price: нет информации"
             }
         default:
             return
