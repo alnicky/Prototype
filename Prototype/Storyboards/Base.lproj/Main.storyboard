@@ -81,34 +81,36 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="jWq-nn-r1x" customClass="SecurityCell" customModule="Prototype" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="375" height="73"/>
+                                <rect key="frame" x="0.0" y="44.5" width="375" height="69.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jWq-nn-r1x" id="m6R-6V-h6P">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v1-m9-ydg">
-                                            <rect key="frame" x="16" y="11" width="343" height="26.5"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secid" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksm-BV-4zZ">
-                                            <rect key="frame" x="16" y="41" width="343" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hbI-uZ-IIR">
+                                            <rect key="frame" x="16" y="11" width="343" height="47.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2v1-m9-ydg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Secid" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ksm-BV-4zZ">
+                                                    <rect key="frame" x="0.0" y="26.5" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="2v1-m9-ydg" firstAttribute="leading" secondItem="m6R-6V-h6P" secondAttribute="leadingMargin" id="1f1-Bl-9Mi"/>
-                                        <constraint firstItem="2v1-m9-ydg" firstAttribute="top" secondItem="m6R-6V-h6P" secondAttribute="topMargin" id="4Y5-2k-neC"/>
-                                        <constraint firstItem="ksm-BV-4zZ" firstAttribute="top" secondItem="m6R-6V-h6P" secondAttribute="topMargin" constant="30" id="RnV-bs-d1b"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ksm-BV-4zZ" secondAttribute="bottom" id="YQq-Ke-54y"/>
-                                        <constraint firstItem="ksm-BV-4zZ" firstAttribute="leading" secondItem="m6R-6V-h6P" secondAttribute="leadingMargin" id="gRd-JH-Pnb"/>
-                                        <constraint firstItem="ksm-BV-4zZ" firstAttribute="trailing" secondItem="m6R-6V-h6P" secondAttribute="trailingMargin" id="r3A-rP-tfI"/>
-                                        <constraint firstItem="2v1-m9-ydg" firstAttribute="trailing" secondItem="m6R-6V-h6P" secondAttribute="trailingMargin" id="rJI-2G-EwE"/>
+                                        <constraint firstItem="hbI-uZ-IIR" firstAttribute="leading" secondItem="m6R-6V-h6P" secondAttribute="leadingMargin" id="3uK-Oz-BnM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hbI-uZ-IIR" secondAttribute="bottom" id="4SU-g9-FwX"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hbI-uZ-IIR" secondAttribute="trailing" id="CjF-MF-AA1"/>
+                                        <constraint firstItem="hbI-uZ-IIR" firstAttribute="top" secondItem="m6R-6V-h6P" secondAttribute="topMargin" id="byx-hy-Oey"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
