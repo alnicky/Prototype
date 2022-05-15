@@ -10,12 +10,19 @@ import Network
 
 class SecuritiesListViewController: UITableViewController {
     
+    // MARK: Loading indicator
+
+    let loadingView = UIView()
+    let activityIndicator = UIActivityIndicatorView()
+    let loadingLabel = UILabel()
+    
     var textFromSearch: String!
     
     var securities: DataFromSecurities?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLoadingScreen()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 40
     }
@@ -34,7 +41,7 @@ class SecuritiesListViewController: UITableViewController {
             
             guard let nameIndex = securities?.securities.columns.firstIndex(of: "shortname") else { return }
             detailsViewController.title = securities?.securities.data[indexPath.row][nameIndex].getStringValue()!
-            detailsViewController.paper = (securities?.securities.data[indexPath.row])!
+//            detailsViewController.paper = (securities?.securities.data[indexPath.row])!
             guard let secidIndex = securities?.securities.columns.firstIndex(of: "secid") else { return }
             detailsViewController.secid = securities?.securities.data[indexPath.row][secidIndex].getStringValue()
             detailsViewController.fetchBoards()
@@ -54,6 +61,8 @@ class SecuritiesListViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        removeLoadingScreen()
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SecurityCell
         
         if let nameIndex = securities?.securities.columns.firstIndex(of: "shortname") {

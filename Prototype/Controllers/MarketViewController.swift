@@ -9,6 +9,12 @@ import UIKit
 
 class MarketViewController: UITableViewController {
     
+    // MARK: Loading indicator
+
+    let loadingView = UIView()
+    let activityIndicator = UIActivityIndicatorView()
+    let loadingLabel = UILabel()
+    
     // MARK: Securities' market data
     
     var marketData: DataFromMarket?
@@ -22,6 +28,7 @@ class MarketViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLoadingScreen()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 20
         }
@@ -79,8 +86,9 @@ class MarketViewController: UITableViewController {
     // MARK: Configure cell
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MarketCell
-            fillCellWithMarketData(cell: cell, indexPath: indexPath)
-            return cell
+        removeLoadingScreen()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MarketCell
+        fillCellWithMarketData(cell: cell, indexPath: indexPath)
+        return cell
     }
 }

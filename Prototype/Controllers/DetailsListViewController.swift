@@ -12,7 +12,7 @@ class DetailsListViewController: UITableViewController {
     
     // MARK: Array of enum "Paper" That is, a instance of the security from selected cell in SecuritiesListViewController
     
-    var paper: [SecurityData] = []
+//    var paper: [SecurityData] = []
     
     // MARK: Securities' boards (Only the first in data)
     
@@ -42,7 +42,8 @@ class DetailsListViewController: UITableViewController {
         
         switch section {
         case 0:
-            numberOfRows = 12
+            // Number of lines of information
+            numberOfRows = boards?.description.data.count ?? 1
         default:
             // Number of boards fo security
             numberOfRows = 1
@@ -61,11 +62,43 @@ class DetailsListViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! SecurityInfoTableViewCell
-            fillCellWithDataFromPaper(cell: infoCell, indexPath: indexPath)
+            
+            if let _ = boards?.description.data.count {
+                for index in indexPath {
+                    guard let title = boards?.description.data[index][1].getStringValue() else { return infoCell }
+//                    if title != "Тип бумаги", title != "Код типа инструмента" {
+                        guard let type = boards?.description.data[index][3].getStringValue() else { return infoCell }
+                        switch type {
+                        case "boolean":
+                            guard let value = boards?.description.data[index][2].getStringValue() else { return infoCell }
+                            if value == "1" {
+                                infoCell.infoLabel.text = "\(title): да"
+                            } else {
+                                infoCell.infoLabel.text = "\(title): нет"
+                            }
+                        default:
+                            guard let value = boards?.description.data[index][2].getStringValue() else { return infoCell }
+                            infoCell.infoLabel.text = "\(title): \(value)"
+                        }
+//                    } else {
+//                        infoCell.infoLabel.text = ""
+//                    }
+                }
+            } else  {
+                infoCell.infoLabel.text = "Нет информации о бумаге"
+            }
+            
             return infoCell
         default:
             let boardCell = tableView.dequeueReusableCell(withIdentifier: "boardCell", for: indexPath) as! BoardCell
-            fillCellWithBoardsName(cell: boardCell, indexPath: indexPath)
+            
+            if let index = boards?.boards.columns.firstIndex(of: "title"),
+               let name = boards?.boards.data[0][index].getStringValue() {
+                boardCell.boardLabel.text = name
+            } else {
+                boardCell.boardLabel.text = "Неизвестное название"
+            }
+            
             return boardCell
         }
     }
@@ -91,7 +124,7 @@ class DetailsListViewController: UITableViewController {
         case 0:
             label.text = "Информация"
         default:
-            label.text = "Инструменты"
+            label.text = "Режимы"
         }
         
         label.font = .boldSystemFont(ofSize: 25)

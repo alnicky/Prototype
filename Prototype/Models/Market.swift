@@ -77,15 +77,6 @@ extension BoardMarketData {
         }
     }
     
-//    func getIntValue() -> Int? {
-//        switch self {
-//        case .integer(let value):
-//            return value
-//        default:
-//            return nil
-//        }
-//    }
-    
     func getDoubleValue() -> Double? {
         switch self {
         case .double(let value):
@@ -96,13 +87,3 @@ extension BoardMarketData {
     }
     
 }
-
-//extension MarketData {
-//
-//    // MARK: Getting number of item in columns
-//
-//    func getColumnNameNumber(name: String) -> Int {
-//        self.columns.firstIndex(of: name)!
-//    }
-//
-//}

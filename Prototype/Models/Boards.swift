@@ -9,18 +9,24 @@ import Foundation
 
 // MARK: Data from Boards
 struct DataFromBoards: Codable {
+    let description: Description
     let boards: Boards
+}
+
+// MARK: Description
+struct Description: Codable {
+    let data: [[Data]]
+    let columns: [String]
 }
 
 // MARK: Boards
 struct Boards: Codable {
-    let data: [[BoardData]]
+    let data: [[Data]]
     let columns: [String]
 }
 
-
-// MARK: Tool
-enum BoardData: Codable {
+// MARK: Data type
+enum Data: Codable {
     case string(String)
     case integer(Int)
     case null
@@ -59,7 +65,7 @@ enum BoardData: Codable {
             return
         }
         
-        throw DecodingError.typeMismatch(BoardData.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for board"))
+        throw DecodingError.typeMismatch(Data.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for data from boards"))
     }
 
     func encode(to encoder: Encoder) throws {
