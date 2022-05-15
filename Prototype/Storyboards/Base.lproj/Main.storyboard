@@ -20,7 +20,7 @@
                                 <rect key="frame" x="132" y="589" width="111" height="38"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Load data">
+                                <buttonConfiguration key="configuration" style="tinted" title="Поиск">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -33,32 +33,23 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FCy-x1-T2b">
-                                <rect key="frame" x="16" y="152" width="343" height="34"/>
-                                <color key="backgroundColor" red="0.72276830120184987" green="0.62088836671680536" blue="0.48897256102333647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="frame" x="16" y="101" width="343" height="34"/>
+                                <color key="backgroundColor" red="0.85361341041387973" green="0.72859721449526171" blue="0.54424539609209244" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите название" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs0-gu-U4o">
-                                <rect key="frame" x="16" y="112" width="343" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.92156862745098034" green="0.20392156862745098" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="FCy-x1-T2b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KAv-6A-9y7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="f9B-Jy-Ewd" secondAttribute="bottom" constant="40" id="UCA-WT-fXj"/>
-                            <constraint firstItem="cs0-gu-U4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="bs9-m1-dBB"/>
-                            <constraint firstItem="cs0-gu-U4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ebf-n4-Hcu"/>
                             <constraint firstItem="f9B-Jy-Ewd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="132" id="llk-Bf-fHf"/>
                             <constraint firstItem="f9B-Jy-Ewd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mJV-W3-JhQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FCy-x1-T2b" secondAttribute="trailing" constant="16" id="oK6-9E-fTh"/>
-                            <constraint firstItem="FCy-x1-T2b" firstAttribute="top" secondItem="cs0-gu-U4o" secondAttribute="bottom" constant="16" id="osq-yq-oIR"/>
+                            <constraint firstItem="FCy-x1-T2b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="uhd-iR-T4r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f9B-Jy-Ewd" secondAttribute="trailing" id="xrt-ph-0yO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cs0-gu-U4o" secondAttribute="trailing" constant="16" id="zOy-Mm-UG0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SW6-CV-Nak"/>

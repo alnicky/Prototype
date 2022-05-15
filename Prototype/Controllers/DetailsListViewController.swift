@@ -10,11 +10,13 @@ import Network
 
 class DetailsListViewController: UITableViewController {
     
-    // MARK: Array of enum "Paper" That is, a instance of the security from selected cell in SecuritiesListViewController
+    // MARK: Loading indicator
+
+    let loadingView = UIView()
+    let activityIndicator = UIActivityIndicatorView()
+    let loadingLabel = UILabel()
     
-//    var paper: [SecurityData] = []
-    
-    // MARK: Securities' boards (Only the first in data)
+    // MARK: Securities' boards and description (Only the first in data)
     
     var boards: DataFromBoards?
     
@@ -23,12 +25,9 @@ class DetailsListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLoadingScreen()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
     }
 
     // MARK: - Table view data source
@@ -59,6 +58,8 @@ class DetailsListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        removeLoadingScreen()
+        
         switch indexPath.section {
         case 0:
             let infoCell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! SecurityInfoTableViewCell

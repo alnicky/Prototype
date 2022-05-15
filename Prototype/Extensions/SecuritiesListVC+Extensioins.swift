@@ -42,15 +42,15 @@ extension SecuritiesListViewController {
     // MARK: Alert
 
     func showLossNetworkAlert() {
-            let alert = UIAlertController(title: "Lost connection",
-                                          message: "Please connect to network or turn off VPN",
-                                          preferredStyle: .alert)
-        
-            alert.addAction(UIAlertAction(title: "OK",
-                                          style: .cancel,
-                                          handler: {(_: UIAlertAction!) in }))
-        
-            self.present(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "Lost connection",
+                                      message: "Please connect to network or turn off VPN",
+                                      preferredStyle: .alert)
+    
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .cancel,
+                                      handler: {(_: UIAlertAction!) in }))
+    
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: Configuring URL

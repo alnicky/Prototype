@@ -23,6 +23,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         searchTextField.keyboardType = .default
         searchTextField.autocorrectionType = .default
         searchTextField.autocapitalizationType = .sentences
+        searchTextField.attributedPlaceholder = NSAttributedString(
+            string: "Поиск",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        )
+        
 
         
         self.hideKeyboardWhenTappedAround()

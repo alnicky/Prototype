@@ -41,7 +41,6 @@ class SecuritiesListViewController: UITableViewController {
             
             guard let nameIndex = securities?.securities.columns.firstIndex(of: "shortname") else { return }
             detailsViewController.title = securities?.securities.data[indexPath.row][nameIndex].getStringValue()!
-//            detailsViewController.paper = (securities?.securities.data[indexPath.row])!
             guard let secidIndex = securities?.securities.columns.firstIndex(of: "secid") else { return }
             detailsViewController.secid = securities?.securities.data[indexPath.row][secidIndex].getStringValue()
             detailsViewController.fetchBoards()
