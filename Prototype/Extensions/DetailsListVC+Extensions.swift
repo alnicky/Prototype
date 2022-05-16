@@ -31,6 +31,7 @@ extension DetailsListViewController {
             do {
                 self.boards = try JSONDecoder().decode(DataFromBoards.self, from: data)
                         DispatchQueue.main.async {
+                            self.removeLoadingScreen()
                             self.tableView.reloadData()
                         }
             } catch let error {

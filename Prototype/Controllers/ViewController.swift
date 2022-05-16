@@ -28,8 +28,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
         
-
-        
         self.hideKeyboardWhenTappedAround()
         self.searchTextField.delegate = self
     }

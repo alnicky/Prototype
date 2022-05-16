@@ -33,6 +33,7 @@ extension MarketViewController {
             do {
                 self.marketData = try JSONDecoder().decode(DataFromMarket.self, from: data)
                 DispatchQueue.main.async {
+                    self.removeLoadingScreen()
                     self.tableView.reloadData()
                 }
             } catch let error {
@@ -131,7 +132,10 @@ extension MarketViewController {
             URLSession.shared.dataTask(with: url) {
                 (data, response, error) in
                 guard error == nil else {
-                    print(error?.localizedDescription ?? "noDesciption")
+                    print(error?.localizedDescription ?? "No desciption")
+                    DispatchQueue.main.async {
+                        self.showLossNetworkAlert()
+                    }
                     return
                 }
                 guard let data = data else { return }

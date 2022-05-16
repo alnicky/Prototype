@@ -58,7 +58,7 @@ class DetailsListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        removeLoadingScreen()
+//        removeLoadingScreen()
         
         switch indexPath.section {
         case 0:
