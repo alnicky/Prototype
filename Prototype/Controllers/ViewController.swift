@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "loadData" && NetStatus.shared.isConnected &&
-            NetStatus.shared.interfaceType != Network.NWInterface.InterfaceType.other {
+            NetStatus.shared.interfaceType  != Network.NWInterface.InterfaceType.other {
             if let textForSearch = searchTextField.text, textForSearch.trimmingCharacters(in: .whitespacesAndNewlines).count >= 3 {
                 let securityVC = segue.destination as! SecuritiesListViewController
                 securityVC.textFromSearch = textForSearch.trimmingCharacters(in: .whitespacesAndNewlines)

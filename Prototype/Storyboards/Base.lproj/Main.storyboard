@@ -52,7 +52,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f9B-Jy-Ewd" secondAttribute="trailing" id="xrt-ph-0yO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="SW6-CV-Nak"/>
+                    <navigationItem key="navigationItem" id="SW6-CV-Nak">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Dtf-Wb-5Pk"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="loadDataButton" destination="f9B-Jy-Ewd" id="9mt-Qi-Jhe"/>
                         <outlet property="searchTextField" destination="FCy-x1-T2b" id="sku-V8-nFL"/>
